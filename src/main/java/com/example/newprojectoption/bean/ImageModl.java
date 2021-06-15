@@ -19,7 +19,7 @@ public class ImageModl {
         this.type = type;
         this.picByte = picByte;
     }
-    @Column(name = "picByte", length = 1000000)
+    @Column(name = "picByte", length = 300000000)
     private byte[]picByte;
 
     public String getName() {

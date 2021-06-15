@@ -4,13 +4,14 @@ package com.example.newprojectoption.ws;
 import com.example.newprojectoption.bean.Absence;
 import com.example.newprojectoption.service.AbsenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("ispits-project/absence")
-
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class AbsenceProvided {
     @Autowired
     private AbsenceService absenceService;
@@ -49,5 +50,13 @@ public class AbsenceProvided {
         absenceService.update(absences);
     }
 
+    @GetMapping("/seance/libelle/{libelle}")
+    public List<Absence> findBySeanceLibelle(@PathVariable String libelle) {
+        return absenceService.findBySeanceLibelle(libelle);
+    }
 
+    @DeleteMapping("/etudian/cne/{cne}/seance/libelle/{libelle}")
+    public int deleteByEtudiantCneAndSeanceLibelle(@PathVariable String cne,@PathVariable String libelle) {
+        return absenceService.deleteByEtudiantCneAndSeanceLibelle(cne, libelle);
+    }
 }

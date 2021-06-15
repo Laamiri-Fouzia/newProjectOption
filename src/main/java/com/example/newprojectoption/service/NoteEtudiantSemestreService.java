@@ -86,9 +86,10 @@ public class NoteEtudiantSemestreService {
             for (ModuleSemestreOption moduleSemestreOption : myModules) {
                 List<NoteEtudiantModule> notesModules = noteEtudiantModuleService.findByModuleSemestreOptionMyModuleCodeAndEtudiantCne(moduleSemestreOption.getMyModule().getCode(),etudiantOption.getEtudiant().getCne());
                 NoteEtudiantModule notetudiantModule;
+                if (notesModules.size() == 0)
+                    return null;
                 if (notesModules.size() == 1) {
                     notetudiantModule = notesModules.get(0);
-
                 } else {
                     if (notesModules.get(0).getModuleSemestreOption().getAnneeUniversitaire().getAnneeOne() > notesModules.get(1).getModuleSemestreOption().getAnneeUniversitaire().getAnneeOne())
                         notetudiantModule = notesModules.get(0);

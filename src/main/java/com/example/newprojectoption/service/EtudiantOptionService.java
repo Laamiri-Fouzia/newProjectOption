@@ -35,6 +35,8 @@ public class EtudiantOptionService {
 
     @Transactional
     public int deleteByEtudiantCne(String cne) {
+        if(noteEtudiantModuleService.findByEtudiantCne(cne).size()!=0)
+            return -7;
         int res=etudiantOptionDao.deleteByEtudiantCne(cne);
         res+=inscriptionEtudiantModuleService.deleteByEtudiantCne(cne);
         return res+etudiantService.deleteByCne(cne);

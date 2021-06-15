@@ -79,4 +79,13 @@ public class AbsenceService {
             absenceDao.save(abs);
         }
     }
+
+    public List<Absence> findBySeanceLibelle(String libelle) {
+        return absenceDao.findBySeanceLibelle(libelle);
+    }
+
+    @Transactional
+    public int deleteByEtudiantCneAndSeanceLibelle(String cne, String libelle) {
+        return absenceDao.deleteByEtudiantCneAndSeanceLibelle(cne, libelle);
+    }
 }

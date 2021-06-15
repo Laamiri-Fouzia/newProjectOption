@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("ispits-project/seance")
-
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class SeanceProvided {
     @Autowired
     private SeanceService seanceService;
